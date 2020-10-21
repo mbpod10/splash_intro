@@ -59,8 +59,8 @@ https://github.com/scrapy-plugins/scrapy-splash
 pip install scrapy-splash
 ```
 - Configure
-  1. In `settings.py` of project: `SPLASH_URL = 'http://192.168.59.103:8050'` or `SPLASH_URL = 'http://localhost:8050'` if you have docker desktop
-  2. Add middleware to `settings.py`
+1. In `settings.py` of project: `SPLASH_URL = 'http://192.168.59.103:8050'` or `SPLASH_URL = 'http://localhost:8050'` if you have docker desktop
+2. Add middleware to `settings.py`
 ```python
 DOWNLOADER_MIDDLEWARES = {
   'scrapy_splash.SplashCookiesMiddleware': 723,
@@ -68,17 +68,17 @@ DOWNLOADER_MIDDLEWARES = {
   'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
 }
 ```
-  3. Spider Middleware to `settings.py` 
+3. Spider Middleware to `settings.py` 
 ```py
 SPIDER_MIDDLEWARES = {
     'scrapy_splash.SplashDeduplicateArgsMiddleware': 100,
 }
 ```
-  4. Set a custom DUPEFILTER_CLASS:
+4. Set a custom DUPEFILTER_CLASS:
 ```py
 DUPEFILTER_CLASS = 'scrapy_splash.SplashAwareDupeFilter'
 ```
-  5. If you use Scrapy HTTP cache then a custom cache storage backend is required. scrapy-splash provides a subclass of scrapy.contrib.httpcache.FilesystemCacheStorage:
+5. If you use Scrapy HTTP cache then a custom cache storage backend is required. scrapy-splash provides a subclass of scrapy.contrib.httpcache.FilesystemCacheStorage:
 ```py
 HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
 ```
